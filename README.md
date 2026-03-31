@@ -18,37 +18,49 @@ Measurement issues often go undetected until after publication, forcing analysts
 ## Project Structure
 
 ```
+def detect_statistical_method(text):
+    if any(s in text for s in ["logistic regression", "odds ratio", "or ="]):
+        return "Logistic regression"
+    elif any(s in text for s in ["linear regression", "beta coefficient", 
+                                  "linear mixed"]):
+        return "Linear regression"
+    elif any(s in text for s in ["analysis of variance", "anova", 
+                                  "one-way anova"]):
+        return "ANOVA"
+    elif any(s in text for s in ["cox", "hazard ratio", "survival analysis", 
+                                  "time to event"]):
+        return "Hazard model"
+    else:
+        return "Other/not detected"
+```
+
+---
+
+### Step 6 — Update Folder Structure
+```
 usda-food-security-audit/
 │
-├── README.md                   # This file
-├── pre-registration/
-│   └── osf_preregistration.md  # Locked protocol (OSF mirror)
-│
-├── data/
-│   ├── paper_tracking_sheet.csv        # Master paper log (paper_id, citation, module, dataset)
-│   ├── redcap_export_raw.csv           # Raw REDCap export (60 papers)
-│   └── redcap_export_cleaned.csv       # Cleaned dataset ready for analysis
-│
-├── papers/
-│   └── paper_001_Myers_2019.pdf        # PDFs named: paper_###_Author_Year.pdf
+├── R/
+│   ├── 01_data_cleaning.R
+│   ├── 02_irr_kappa.R
+│   ├── 03_audit_analysis.R         # Now includes stratification by method
+│   ├── 04_nhanes_prep.R
+│   └── 05_nhanes_models.R          # Now runs both logistic and linear sections
 │
 ├── codebook/
-│   └── coding_manual.md        # Variable definitions, categories, edge case rules
+│   ├── coding_manual.md            # Includes method-specific coding notes
+│   └── method_coding_guide.md      # NEW: how failure modes manifest per method
 │
-├── R/
-│   ├── 01_data_cleaning.R      # REDCap export cleaning, factor recoding
-│   ├── 02_irr_kappa.R          # Inter-rater reliability (Cohen's Kappa)
-│   ├── 03_audit_analysis.R     # Failure mode frequencies, upset plot
-│   ├── 04_nhanes_prep.R        # NHANES data download and scoring
-│   └── 05_nhanes_models.R      # Four parallel regression models
-│
-├── outputs/
-│   ├── figures/                # All manuscript figures
-│   ├── tables/                 # All manuscript tables
-│   └── cheatsheet/             # One-page practitioner flowchart (PDF)
-│
-└── manuscript/
-    └── draft_v1.Rmd            # Full manuscript in R Markdown
+└── outputs/
+    ├── figures/
+    │   ├── failure_rates_overall.png
+    │   ├── failure_rates_by_method.png    # NEW
+    │   ├── failure_rates_by_module.png
+    │   └── upset_plot_cooccurrence.png
+    └── tables/
+        ├── table1_sample_characteristics.csv
+        ├── table2_failure_rates_overall.csv
+        └── table3_failure_rates_by_method.csv   # NEW
 ```
 
 ---
