@@ -36,7 +36,7 @@ def detect_statistical_method(text):
 
 ---
 
-### Step 6 — Update Folder Structure
+### Folder Structure
 ```
 usda-food-security-audit/
 │
