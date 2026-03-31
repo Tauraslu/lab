@@ -40,27 +40,82 @@ def detect_statistical_method(text):
 ```
 usda-food-security-audit/
 │
+├── README.md
+├── LICENSE
+├── .gitignore
+│
+├── pre-registration/
+│   ├── osf_preregistration.md
+│   └── osf_preregistration_submitted.pdf
+│
+├── codebook/
+│   ├── coding_manual.md
+│   ├── method_coding_guide.md
+│   ├── edge_cases_log.md
+│   └── irr_calibration_set.md
+│
+├── data/
+│   ├── raw/
+│   │   ├── paper_tracking_sheet.csv
+│   │   ├── redcap_export_raw.csv
+│   │   └── nhanes/
+│   │       ├── nhanes_food_security_raw.csv
+│   │       └── nhanes_hba1c_raw.csv
+│   └── processed/
+│       ├── redcap_export_cleaned.csv
+│       ├── nhanes_analysis_ready.csv
+│       └── irr_double_coded_10papers.csv
+│
+├── papers/
+│   ├── 6item/
+│   │   └── paper_001_Myers_2019.pdf
+│   └── 10_18item/
+│       └── paper_031_Leung_2015.pdf
+│
 ├── R/
 │   ├── 01_data_cleaning.R
 │   ├── 02_irr_kappa.R
-│   ├── 03_audit_analysis.R         # Now includes stratification by method
+│   ├── 03_audit_analysis.R
 │   ├── 04_nhanes_prep.R
-│   └── 05_nhanes_models.R          # Now runs both logistic and linear sections
+│   ├── 05_nhanes_models.R
+│   └── utils/
+│       ├── score_usda_module.R
+│       └── plot_theme.R
 │
-├── codebook/
-│   ├── coding_manual.md            # Includes method-specific coding notes
-│   └── method_coding_guide.md      # NEW: how failure modes manifest per method
+├── python/
+│   ├── qa_checker/
+│   │   ├── main.py
+│   │   ├── extractor.py
+│   │   ├── detectors.py
+│   │   ├── conflict_engine.py
+│   │   └── report_generator.py
+│   ├── requirements.txt
+│   └── tests/
+│       └── test_detectors.py
 │
-└── outputs/
-    ├── figures/
-    │   ├── failure_rates_overall.png
-    │   ├── failure_rates_by_method.png    # NEW
-    │   ├── failure_rates_by_module.png
-    │   └── upset_plot_cooccurrence.png
-    └── tables/
-        ├── table1_sample_characteristics.csv
-        ├── table2_failure_rates_overall.csv
-        └── table3_failure_rates_by_method.csv   # NEW
+├── outputs/
+│   ├── figures/
+│   │   ├── fig1_failure_rates_overall.png
+│   │   ├── fig2_failure_rates_by_module.png
+│   │   ├── fig3_failure_rates_by_method.png
+│   │   ├── fig4_upset_cooccurrence.png
+│   │   └── fig5_nhanes_model_comparison.png
+│   ├── tables/
+│   │   ├── table1_sample_characteristics.csv
+│   │   ├── table2_failure_rates_overall.csv
+│   │   ├── table3_failure_rates_by_method.csv
+│   │   ├── table4_failure_rates_by_module.csv
+│   │   └── table5_nhanes_model_results.csv
+│   ├── qa_reports/
+│   │   └── discrepancy_report_batch1.csv
+│   └── cheatsheet/
+│       └── practitioner_flowchart.pdf
+│
+└── manuscript/
+    ├── draft_v1.Rmd
+    ├── references.bib
+    └── journal_submission/
+        └── cover_letter.docx
 ```
 
 ---
