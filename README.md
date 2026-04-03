@@ -400,4 +400,4 @@ Student contributors are responsible for systematic coding (~10–15 min per pap
 
 MIT License. See `LICENSE` for details.
 
-**Contact:** Brian Spitzer | NYU School of Global Public Health
+**Contact:** Brian Spitzer | NYU School of Global Public Health Email: bjs419@nyu.edu
