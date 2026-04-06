@@ -1,0 +1,28 @@
+# Never commit raw data or PDFs
+data/raw/*.csv
+data/processed/
+papers/
+
+# R
+.Rhistory
+.RData
+.Rproj.user/
+*.Rproj
+
+# Python
+__pycache__/
+*.pyc
+.env
+venv/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Generated outputs
+outputs/figures/
+outputs/tables/
+outputs/qa_reports/
+
+# Exception — keep the blank tracking sheet
+!data/raw/paper_tracking_sheet.csv
